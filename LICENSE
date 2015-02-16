@@ -1,4 +1,4 @@
-Asn1Net.Forms.TreeView - Managed ASN.1 Parsing library. Part of Asn1Net utilities.
+Asn1Net.Forms.TreeView - User control for visualizing ASN.1 objects. Part of Asn1Net utilities.
 Copyright (c) 2014-2015 Peter Polacko
 Author: Peter Polacko <peter.polacko+asn1net@gmail.com>
 
