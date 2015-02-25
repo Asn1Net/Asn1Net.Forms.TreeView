@@ -24,6 +24,7 @@ namespace Net.Asn1.Forms.TreeView
     /// </summary>
     public class Asn1TreeView : System.Windows.Forms.TreeView
     {
+        private bool _EncapsulatedDataParsing = true;
         /// <summary>
         /// Flag indicating if encapsulated data from value of a Primitive ASN.1 node should be parsed.
         /// </summary>
@@ -31,8 +32,13 @@ namespace Net.Asn1.Forms.TreeView
         [Category("ASN1 Behavior")]
         [Bindable(BindableSupport.Yes)]
         [DefaultValue(true)]
-        public bool EncapsulatedDataParsing { get; set; }
+        public bool EncapsulatedDataParsing
+        {
+            get { return _EncapsulatedDataParsing; }
+            set { _EncapsulatedDataParsing = value; }
+        }
 
+        private bool _ReadContent = true;
         /// <summary>
         /// Flag indicating if value of Primitive ASN.1 node should be read.
         /// </summary>
@@ -40,7 +46,11 @@ namespace Net.Asn1.Forms.TreeView
         [Category("ASN1 Behavior")]
         [Bindable(BindableSupport.Yes)]
         [DefaultValue(true)]
-        public bool ReadContent { get; set; }
+        public bool ReadContent
+        {
+            get { return _ReadContent; }
+            set { _ReadContent = value; }
+        }
 
         /// <summary>
         /// Load ASN.1 object in form of a stream, parse it and display its structure.
