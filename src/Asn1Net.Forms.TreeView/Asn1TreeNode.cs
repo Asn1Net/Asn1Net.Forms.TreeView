@@ -140,9 +140,16 @@ namespace Net.Asn1.Forms.TreeView
                         stringValue = node.ReadContentAsObjectIdentifier();
                         break;
                     case Asn1Type.PrintableString:
+                        stringValue = node.ReadContentAsPrintableString();
+                        break;
                     case Asn1Type.Ia5String:
+                        stringValue = node.ReadContentAsIA5String();
+                        break;
                     case Asn1Type.Utf8String:
                         stringValue = node.ReadContentAsString();
+                        break;
+                    case Asn1Type.NumericString:
+                        stringValue = node.ReadContentAsNumericString();
                         break;
                     case Asn1Type.GeneralizedTime:
                     case Asn1Type.UtcTime:
@@ -161,6 +168,7 @@ namespace Net.Asn1.Forms.TreeView
                     case Asn1Type.Real:
                         stringValue = node.ReadContentAsReal().ToString(CultureInfo.InvariantCulture);
                         break;
+
                     default:
                         stringValue = node.RawValue.ToHexString();
                         break;
