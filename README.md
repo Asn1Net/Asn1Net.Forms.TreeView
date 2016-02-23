@@ -1,6 +1,8 @@
 Asn1Net.Forms.TreeView
 ======================
 
+[![Build status](https://ci.appveyor.com/api/projects/status/sepfna0a0mkypbvf?svg=true)](https://ci.appveyor.com/project/PeterPolacko/asn1net-forms-treeview)
+
 User control for visualizing ASN.1 objects.
 
 ## Adding Asn1Net.Forms.TreeView to Visual Studio Toolbox
