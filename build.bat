@@ -15,6 +15,17 @@ set cur_dir=%CD%
 call %devenv% || exit /b 1
 set SLNPATH=src\Asn1Net.Forms.TreeView.sln
 
+IF EXIST .nuget\nuget.exe goto restore
+
+echo Downloading nuget.exe
+md .nuget
+@powershell -NoProfile -ExecutionPolicy unrestricted -Command "$ProgressPreference = 'SilentlyContinue'; Invoke-WebRequest 'https://dist.nuget.org/win-x86-commandline/latest/nuget.exe' -OutFile '.nuget\nuget.exe'"
+
+:restore
+IF EXIST packages goto run
+.nuget\NuGet.exe restore %SLNPATH%
+
+:run
 @rem cleanin sln
 msbuild %SLNPATH% /p:Configuration=Release /target:Clean || exit /b 1
 @rem build version (.NET 4.0)
