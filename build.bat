@@ -44,22 +44,20 @@ mkdir %OUTDIR%\net40 || exit /b 1
 copy %SRCDIR%\Asn1Net.Forms.TreeView.dll %OUTDIR%\net40\ || exit /b 1
 copy %SRCDIR%\Asn1Net.Forms.TreeView.xml %OUTDIR%\net40\ || exit /b 1
 
-@rem set license variables
-set LICENSEDIR=build\Asn1Net.Forms.TreeView
+set BUILDDIR=build
 
 @rem copy licenses to output directory
-copy LICENSE %LICENSEDIR%\license.txt || exit /b 1
-copy agpl-3.0.txt %LICENSEDIR% || exit /b 1
-copy README.md %LICENSEDIR%\Readme.txt || exit /b 1
+copy %SRCDIR%\LICENSE.txt %BUILDDIR% || exit /b 1
+copy %SRCDIR%\NOTICE.txt %BUILDDIR% || exit /b 1
+copy README.md %BUILDDIR%\Readme.txt || exit /b 1
 
 @rem copy 3rd party licences
 pushd src\packages\Asn1Net.Reader.* || exit /b 1
-copy 3rd-party-license.txt ..\..\..\%LICENSEDIR%\3rd-party-license.txt || exit /b 1
-copy license.txt ..\..\..\%LICENSEDIR%\asn1net.reader-license.txt || exit /b 1
+copy 3rd-party-license.txt ..\..\..\%BUILDDIR%\3rd-party-license.txt || exit /b 1
+copy license.txt ..\..\..\%BUILDDIR%\asn1net.reader-license.txt || exit /b 1
 popd
 
 @rem copy make_nuget.bat and nuspec file
-set BUILDDIR=build
 copy make_nuget.bat %BUILDDIR% || exit /b 1
 copy Asn1Net.Forms.TreeView.nuspec %BUILDDIR%\Asn1Net.Forms.TreeView\ || exit /b 1
 

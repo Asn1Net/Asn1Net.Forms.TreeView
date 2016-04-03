@@ -11,7 +11,15 @@ setlocal
 set cur_dir=%CD%
 call %devenv% || exit /b 1
 
+IF EXIST nuget.exe goto restore
+
+echo Downloading nuget.exe
+@powershell -NoProfile -ExecutionPolicy unrestricted -Command "$ProgressPreference = 'SilentlyContinue'; Invoke-WebRequest 'https://dist.nuget.org/win-x86-commandline/latest/nuget.exe' -OutFile 'nuget.exe'"
+
 set NUGETDIR=Asn1Net.Forms.TreeView
+
+copy LICENSE.txt %NUGETDIR% || exit /b 1
+copy NOTICE.txt %NUGETDIR% || exit /b 1
 
 nuget pack %NUGETDIR%\Asn1Net.Forms.TreeView.nuspec || exit /b 1
 
